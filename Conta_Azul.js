@@ -50,8 +50,8 @@ btGeraCod.addEventListener('click', (event) => {
 
 // Gera Token
 btGeraToken.addEventListener('click', async(event) => {
+    event.preventDefault()
     if(btGeraToken.value == 'Gera Token'){
-        event.preventDefault()
         const token_todos = await gera_token()
         cb_token_acesso.value = token_todos.access_token
         cb_token_renova.value = token_todos.refresh_token
@@ -59,7 +59,8 @@ btGeraToken.addEventListener('click', async(event) => {
         btGeraToken.value = 'Exportar'
 
     } else{
-        lerArquivo()
+        const arquivo = await lerArquivo()
+        console.log(arquivo)
 
     }
 
@@ -108,9 +109,11 @@ async function lerArquivo() {
   try {
     const data = await fs.readFile(caminho + 'Acesso_Dados.csv', 'utf8');
     console.log('Conteúdo do arquivo:', data);
+    return data
   } catch (err) {
     console.error('Erro ao ler arquivo:', err);
   }
+  
 }
 
 
