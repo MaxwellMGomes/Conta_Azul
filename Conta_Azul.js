@@ -23,10 +23,11 @@ const cb_token_renova = window.document.getElementById('token_renova')
 const client_id = '3s7hmj1jf2fhesvdvfk7d3dpov' //SEU_CLIENT_ID
 const client_secret = 'css6mpnvip3nvqgvnt8vcmdep5mcorqjgk48850e5riu5087vcm'
 const client_Base64 = btoa(`${client_id}:${client_secret}`)
-const redirect_uri = 'https://maxwellmgomes.github.io/Meus_Projetos-Git_HP_Max_Felipe/' // mesma do ContaAzu
+const redirect_uri = 'https://maxwellmgomes.github.io/Conta_Azul/' // mesma do ContaAzu
 const urlAtual = new URL(window.location.href)
 const code = urlAtual.searchParams.get("code")
 const url_codigo = "https://auth.contaazul.com/oauth2/authorize?response_type=code&";
+
 
 //Alterando valor das combox.
 cb_client_id.value = client_id
