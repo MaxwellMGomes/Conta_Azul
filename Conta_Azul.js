@@ -137,6 +137,7 @@ async function criarArquivo() {
 //const { URLSearchParams } = require('url')
 
 /// Fazer download de um aquivo no github
+/*
 const fs = require('fs');
 const https = require('https');
 
@@ -153,7 +154,7 @@ https.get(url, (response) => {
     // Agora pode usar fs.readFile para ler o arquivo local
   });
 });
-
+*/
 ///====================================
 
 
