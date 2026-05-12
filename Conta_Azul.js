@@ -64,7 +64,7 @@ btGeraToken.addEventListener('click', async(event) => {
 // Exporta arquivo
 btexportar.addEventListener('click', (event) => {
     event.preventDefault()
-    const arquivo = await lerArquivo()
+    const arquivo = lerArquivo()
     cb_token_renova.value = arquivo
     console.log(arquivo)
 
