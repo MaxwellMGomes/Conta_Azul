@@ -2,7 +2,9 @@
 /// Lendo elementos do arquivo html
 const btGeraCod = document.getElementById('bt_gera_codigo')
 const btGeraToken = document.getElementById('bt_gera_token')
-//div
+const btexportar = document.getElementById('bt_exportar')
+
+//div token
 const dv_token = window.document.getElementById('token')
 
 //Combobox input
@@ -51,20 +53,24 @@ btGeraCod.addEventListener('click', (event) => {
 // Gera Token
 btGeraToken.addEventListener('click', async(event) => {
     event.preventDefault()
-    if(btGeraToken.value == 'Gera Token'){
-        const token_todos = await gera_token()
-        cb_token_acesso.value = token_todos.access_token
-        cb_token_renova.value = token_todos.refresh_token
-        dv_token.style.display = "block"
-        btGeraToken.value = 'Exportar'
+    const token_todos = await gera_token()
+    cb_token_acesso.value = token_todos.access_token
+    cb_token_renova.value = token_todos.refresh_token
+    dv_token.style.display = "block"
 
-    } else{
-        const arquivo = await lerArquivo()
-        console.log(arquivo)
+  
+})
 
-    }
+// Exporta arquivo
+btexportar.addEventListener('click', (event) => {
+    event.preventDefault()
+    const arquivo = await lerArquivo()
+    cb_token_renova.value = arquivo
+    console.log(arquivo)
 
 })
+
+
 
 //// ==== Funções ========
 function gera_codigo(){
