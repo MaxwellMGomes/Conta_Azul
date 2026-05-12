@@ -53,11 +53,16 @@ btGeraCod.addEventListener('click', (event) => {
 // Gera Token
 btGeraToken.addEventListener('click', async(event) => {
     event.preventDefault()
+    const arquivo = lerArquivo()
+    cb_token_renova.value = arquivo
+    console.log(arquivo)
+
+    /*
     const token_todos = await gera_token()
     cb_token_acesso.value = token_todos.access_token
     cb_token_renova.value = token_todos.refresh_token
     dv_token.style.display = "block"
-
+*/
   
 })
 
