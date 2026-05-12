@@ -24,6 +24,7 @@ const client_id = '3s7hmj1jf2fhesvdvfk7d3dpov' //SEU_CLIENT_ID
 const client_secret = 'css6mpnvip3nvqgvnt8vcmdep5mcorqjgk48850e5riu5087vcm'
 const client_Base64 = btoa(`${client_id}:${client_secret}`)
 const redirect_uri = 'https://maxwellmgomes.github.io/Conta_Azul/' // mesma do ContaAzu
+const caminho = 'C:\\Users\\Public\\Conta_Azul\\'
 const urlAtual = new URL(window.location.href)
 const code = urlAtual.searchParams.get("code")
 const url_codigo = "https://auth.contaazul.com/oauth2/authorize?response_type=code&";
@@ -33,8 +34,7 @@ const url_codigo = "https://auth.contaazul.com/oauth2/authorize?response_type=co
 cb_client_id.value = client_id
 cb_client_secret.value = client_secret
 cb_client_Base64.value = client_Base64
-cb_caminho.value = 'C:\Users\Public\Conta_Azul'
-
+cb_caminho.value = caminho
 /// Captura o código se já tiver nos parametros da URL ou direciona para login Conta_Azul
 if (code) {
         cb_code.value = code
@@ -45,16 +45,24 @@ if (code) {
 ///Ação dos botões quando acionados
 // Gera Código
 btGeraCod.addEventListener('click', (event) => {
-    window.location.href = 'https://maxwellmgomes.github.io/Meus_Projetos-Git_HP_Max_Felipe/' 
+    window.location.href = redirect_uri 
 })
 
 // Gera Token
 btGeraToken.addEventListener('click', async(event) => {
-    event.preventDefault()
-    const token_todos = await gera_token()
-    cb_token_acesso.value = token_todos.access_token
-    cb_token_renova.value = token_todos.refresh_token
-    dv_token.style.display = "block"
+    if(btGeraToken.value == 'Gera Token'){
+        event.preventDefault()
+        const token_todos = await gera_token()
+        cb_token_acesso.value = token_todos.access_token
+        cb_token_renova.value = token_todos.refresh_token
+        dv_token.style.display = "block"
+        btGeraToken.value = 'Exportar'
+
+    } else{
+        lerArquivo()
+
+    }
+
 })
 
 //// ==== Funções ========
@@ -98,7 +106,7 @@ async function gera_token() {
 // Ler CSV
 async function lerArquivo() {
   try {
-    const data = await fs.readFile('exemplo.txt', 'utf8');
+    const data = await fs.readFile(caminho + 'Acesso_Dados.csv', 'utf8');
     console.log('Conteúdo do arquivo:', data);
   } catch (err) {
     console.error('Erro ao ler arquivo:', err);
@@ -110,8 +118,8 @@ async function lerArquivo() {
 
 async function criarArquivo() {
   try {
-    const conteudo = 'Olá, este é um exemplo do módulo fs!';
-    await fs.writeFile('exemplo.txt', conteudo, 'utf8');
+    const conteudo = 'Nome;Valor\nCodigo_Acesso_Dia;0ac140b6-e1cb-4a53-b6d1-8ff89a94f382\nCliente_ID;3s7hmj1jf2fhesvdvfk7d3dpov';
+    await fs.writeFile(caminho + 'Acesso_Dados.csv', conteudo, 'utf8');
     console.log('Arquivo criado com sucesso!');
   } catch (err) {
     console.error('Erro ao criar arquivo:', err);
