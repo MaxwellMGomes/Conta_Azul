@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conta Azul</title>
+    <link rel="stylesheet" href="./Conta_Azul.css">
+
+</head>
+
+<!--body onload="pag_origem()"> -->
+<body>
+    <header>
+        <h1>Conta Azul</h1>
+        <h2>Gerando Código e Token</h2>
+    </header>
+    <section>
+        <div id="Gera_Codigo">
+            <form>
+                Gerando Código   
+                <!--input class="botao" type="submit" name="bt_gera_codigo" value="Gerar Codigo" onclick="pega_codigo()"-->
+                <button class="botao" id="bt_gera_codigo" >Gerar Codigo</button>
+            </form>
+           <hr>
+
+        </div>
+    
+        <div id="Gera_Token">
+            <form>
+                <h3>Gerando Token 
+                    <button class="botao" id="bt_gera_token" name='bt_gera_token'>Gera Token</button></h3>
+                <p class="vlinha"><label class="alinha" for="code">Codigo Dia:</label>
+                <input class="cboxg" type='text' name='code' id="code" value=''></p>
+
+                <p class="vlinha"><label class="alinha" for="data_ini_base">Coleta:</label>
+                <input type='date' name='data_ini_base' id='data_ini_base' >
+
+                <label for="data_fim_base"> a </label>
+                <input type='date' name='data_fim_base' id='data_fim_base' ></p>
+                
+                <p class="vlinha"><label class="alinha"  for="data_ini_lanca">Lançamento:</label>
+                <input type='date' name='data_ini_lanca' id='data_ini_lanca'>
+                <label for="data_fim_lanca"> a </label>
+                <input type='date' name='data_fim_lanca' id='data_fim_lanca' ></p>
+
+                <p class="vlinha"><label class="alinha"  for="caminho">Caminho: </label>
+                <input class="cboxg" type='text' name='caminho' id="caminho" ></p>
+                <p class="vlinha"><label class="alinha" for="client_id"> Cliente ID:</label>
+                <input class="cboxg" type='text' name='client_id' id='client_id'  disabled></p>
+
+                <p class="vlinha" ><label class="alinha" for="client_secret">Cliente Secret:</label>
+                <textarea class="cboxg" type='text' name='client_secret' id='client_secret' disabled></textarea></p>
+
+                <p class="vlinha" ><label class="alinha"  for="client_Base64">Cliente Base64: </label>
+                <textarea class="cboxg" type='text' name='client_Base64' id='client_Base64' disabled></textarea></p>
+
+            </form>
+        </div>
+        <div id="token">
+            <hr>
+            <p class="vlinha" ><label class="alinha" for="token_acesso">Token Acesso:</label>
+            <textarea class="cboxg" type='text' name='token_acesso' id='token_acesso' disabled></textarea></p>
+            <p class="vlinha" ><label class="alinha" for="token_renova">Token Renova:</label>
+            <textarea class="cboxg" type='text' name='token_renova' id='token_renova' disabled></textarea></p>
+        </div>
+
+    <script>
+ 
+
+    </script>
+
+        <script src="./Conta_Azul.js"></script>
+
+    </section>
+    <footer>
+        <hr>
+          <p>por Maxwell Martins Gomes</p>
+    </footer>
+
+</body>
+</html>

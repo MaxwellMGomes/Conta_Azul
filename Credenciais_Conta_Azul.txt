@@ -1,0 +1,128 @@
+Nome da aplicação Gerado automaticamente : DEV-Maxwell-1776089251316
+client_id : 1ccajutdv7ibn2scdg71f0nma6
+client_secret : 1r4k89m3456n7l7k7cm0fphe5g4ja5lu8emlnfthc6mm9pvt0aom
+
+Informações da conta teste do ERP da Conta Azul
+Usuário : ea7947f4-c664-4228-9f5d-44808f009ab8@devportal.com
+Senha : Cea7947f4-c664-4228-9f5d-44808f009ab8
+
+
+Acesso API via JS:
+https://www.google.com/search?q=API+conta+azul+requisi%C3%A7%C3%A3o+do+codigo+de+acesso+via+JavaScript&oq=API+conta+azul+requisi%C3%A7%C3%A3o+do+codigo+de+acesso+via+JavaScript&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQABiABDIHCAIQABiABDIICAMQABgHGB4yCAgEEAAYBxgeMgYIBRAAGB4yBggGEAAYHjIGCAcQABgeMggICBAAGAUYHjIICAkQABgFGB7SAQkyMTIyM2owajeoAgiwAgHxBUrnQFUbv-H7&sourceid=chrome&ie=UTF-8
+
+--> Aula AJAX Felipe Aguiar --> https://www.youtube.com/watch?v=bpx0r_PLLBo
+---> Aula Fech Gustavo Caetano --> https://www.youtube.com/watch?v=NJzNc8-KqQI
+---> Fech - Matheus Battisti ---> https://www.youtube.com/watch?v=qIGYM4S8x50&t=1727s
+
+====> Exemplodo event.preventDefault() com fetchApi
+// Seleciona o formulário
+const form = document.querySelector('form');
+
+form.addEventListener('submit', async function(event) {
+  // Impede o envio padrão do formulário (recarregar a página)
+  event.preventDefault();
+  const result = await fetchApi(charactereId.value)
+  
+  // Realiza validação ou envia os dados via fetch/ajax
+  console.log('Formulário não foi enviado, mas os dados podem ser processados.');
+});
+=================================================================
+
+Correto: 
+https://auth.contaazul.com/oauth2/authorize?response_type=code&client_id=3s7hmj1jf2fhesvdvfk7d3dpov&redirect_uri=https://www.google.com/&state=ESTADO&scope=openid+profile+aws.cognito.signin.user.admin
+
+Ultimo gerado no php
+https://auth.contaazul.com/oauth2/authorize?response_type=codeclient_id=3s7hmj1jf2fhesvdvfk7d3dpov&redirect_uri=https%3A%2F%2Fwww.google.com%2F&state=ESTADO&scope=openid%2Bprofile%2Baws.cognito.signin.user.admin
+
+
+
+
+
+Outros Testes
+https://auth.contaazul.com/login?response_type=code&client_id=1ccajutdv7ibn2scdg71f0nma6&redirect_uri=https://www.google.com/&state=ESTADO&scope=openid+profile+aws.cognito.signin.user.admin
+
+
+http://localhost/login?response_type=code&client_id=3s7hmj1jf2fhesvdvfk7d3dpov&redirect_uri=https://www.google.com/&state=ESTADO&scope=openid+profile+aws.cognito.signin.user.admin
+
+Aprendizado - Header php
+/// Verificar o comando header => Location manda para a url, as só quero o caminho.    
+
+//header("Content-Type: text/html; charset=utf-8");
+    //$lista = headers_list();
+    //header_register_callback();
+
+/// Chamando o Codigo inicial
+  $url = $url_codigo . rawurldecode(http_build_query([
+            '&client_id' => $client_id,
+            'redirect_uri' => $redirect_uri,
+            'state' => 'ESTADO', // String aleatória
+            'scope' => 'openid+profile+aws.cognito.signin.user.admin',
+            ]));
+
+        $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // Retorna o conteúdo como string
+            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
+            $resultado = curl_exec($ch);
+            $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            $url_final = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
+            curl_close($ch);
+
+
+
+====== Teste gerando codigo ====
+ /* echo "<br/> url: $url. ,<hr> <br/>";
+        $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            //curl_setopt($ch, CURLOPT_HEADER, false);
+            //curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // Retorna o conteúdo como string
+            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+            $resultado = curl_exec($ch);
+            $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            $url_final = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
+            curl_close($ch);
+
+            echo "<br/> Resultado: $resultado,<hr> <br/>Http codigo: $httpCode ,<hr><br/> url_final: $url_final";
+
+      */
+
+
+        //echo "<a href='http://localhost/conta_azul/Conta_Azul_Acessos.php'> Gerar Codigo Acesso</a><br/>";
+       //$codigo = !empty($_GET["cod"])?$_GET["cod"]:"zerado";
+     
+     
+
+    
+      
+      /* 
+        <form method="get" action="Conta_Azul_Acessos.php">
+            codigo: <input type="text" name="code" value=<?php echo $cod; ?>/><br/><br/>
+
+            <input type="submit" name="codigo" value="Retorna Codigo"/>
+        
+        </form>
+        <hr>
+    </div>
+    
+   
+      <div>
+        <h3>=== Gerando Token === </h3>
+        <form method="get" action="Conta_Azul_Acessos.php">
+            codigo: <input type="text" name="code"/><br/><br/>
+
+            <input type="submit" name="codigo" value="Retorna Codigo"/>
+        
+        </form>
+        <hr>
+    </div>
+  */
+
+
+
+http://localhost/conta_azul/Conta_Azul_Servidor.php?code=66021fd7-2fc1-4b92-a7ac-811804055a66&botao_codigo=Gera+Token&code=3s7hmj1jf2fhesvdvfk7d3dpov&code=css6mpnvip3nvqgvnt8vcmdep5mcorqjgk48850e5riu5087vcm&code=
+
+
+
+curl -i -X GET \
+  'https://api-v2.contaazul.com/v1/categorias?pagina=1&tamanho_pagina=10&campo_ordenado_ascendente=NOME&campo_ordenado_descendente=TIPO&busca=010&tipo=RECEITA&apenas_filhos=true&nome=Eletr%C3%B4nicos&permite_apenas_filhos=true' \
+  -H 'Authorization: Bearer <YOUR_JWT_HERE>'
