@@ -113,11 +113,12 @@ async function gera_token() {
 async function lerArquivo(valor) {
 // Maneira de ler aquivo no servidor via fecth
     const endpoint = caminho + valor
-    const result = fetch(endpoint)
-     .then((res)=>res.json())
-     .then((data)=>{
-      console.log(data)})
-    return result
+    const result = await fetch(endpoint)
+     .then((res)=>res.text())
+    
+    const data = await result.json()
+    console.log(data)
+    return data
     }
   
 
