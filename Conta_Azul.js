@@ -64,7 +64,7 @@ btGeraToken.addEventListener('click', async(event) => {
 
 btexporta.addEventListener('click', async(event) => {
     event.preventDefault() 
-    const arquivo = lerArquivo('Acesso_Dados.csv')
+    const arquivo = await lerArquivo('Acesso_Dados.csv')
     cb_token_renova.value = arquivo
     console.log(arquivo)
 
