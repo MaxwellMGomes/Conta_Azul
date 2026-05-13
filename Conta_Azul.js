@@ -114,11 +114,11 @@ async function lerArquivo() {
 // Maneira de ler aquivo no servidor via fecth
     const endpoint = caminho+'Acesso_Dados.csv'
     fetch(endpoint)
-     .then(res=>res.text())
-     .then(res=>{
-      console.log(res)})
+     .then((res)=>res.json())
+     .then((data)=>{
+      console.log(data)})
     }
-   
+   return data
 
 // Gravar CSV
 
