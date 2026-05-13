@@ -117,8 +117,9 @@ async function lerArquivo(valor) {
      .then((res)=>res.json())
      .then((data)=>{
       console.log(data)})
+    return result
     }
-   return result
+  
 
 // Gravar CSV
 
