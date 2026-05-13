@@ -116,9 +116,8 @@ async function lerArquivo(valor) {
     const result = await fetch(endpoint)
      .then((res)=>res.text())
     
-    const data = await result.json()
-    console.log(data)
-    return data
+    console.log(result)
+    return result
     }
   
 
