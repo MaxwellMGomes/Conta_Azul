@@ -117,8 +117,8 @@ async function lerArquivo(valor) {
      .then((response)=>response.text())
      .then(data => {
           console.log(data)
+          return data
      })
-    
     return result
     }
   
