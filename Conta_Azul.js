@@ -1,8 +1,3 @@
-//Importando bibliotecas
-//import fs from 'node:fs'
-//const fs = require('node:fs');
-
-
 /// Lendo elementos do arquivo html
 const btGeraCod = document.getElementById('bt_gera_codigo')
 const btGeraToken = document.getElementById('bt_gera_token')
@@ -140,6 +135,8 @@ async function criarArquivo() {
 
 // Importanto bibliotecas
 // Em tese todas já nativos do Node.js
+//import fs from 'node:fs'
+//const fs = require('node:fs');
 //import fs from 'node:fs/promises'
 //import fetch from 'node-fetch'
 //const fetch = require('node-fetch')
