@@ -1,0 +1,20 @@
+{
+  "name": "conta_azul",
+  "version": "1.0.0",
+  "description": "Acesso sistema Conta_Azul via API",
+  "main": "Conta_Azul.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaxwellMGomes/Conta_Azul.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MaxwellMGomes/Conta_Azul/issues"
+  },
+  "homepage": "https://github.com/MaxwellMGomes/Conta_Azul#readme"
+}

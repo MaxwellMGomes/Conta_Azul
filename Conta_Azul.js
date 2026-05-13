@@ -1,8 +1,12 @@
+//Importando bibliotecas
+//import fs from 'node:fs'
+//const fs = require('node:fs');
+
 
 /// Lendo elementos do arquivo html
 const btGeraCod = document.getElementById('bt_gera_codigo')
 const btGeraToken = document.getElementById('bt_gera_token')
-const btexportar = document.getElementById('bt_exportar')
+const btexporta = document.getElementById('bt_exporta')
 
 //div token
 const dv_token = window.document.getElementById('token')
@@ -26,7 +30,7 @@ const client_id = '3s7hmj1jf2fhesvdvfk7d3dpov' //SEU_CLIENT_ID
 const client_secret = 'css6mpnvip3nvqgvnt8vcmdep5mcorqjgk48850e5riu5087vcm'
 const client_Base64 = btoa(`${client_id}:${client_secret}`)
 const redirect_uri = 'https://maxwellmgomes.github.io/Conta_Azul/' // mesma do ContaAzu
-const caminho = 'C:\\Users\\Public\\Conta_Azul\\'
+const caminho = 'https://raw.githubusercontent.com/MaxwellMGomes/Conta_Azul/refs/heads/main/Dados/'
 const urlAtual = new URL(window.location.href)
 const code = urlAtual.searchParams.get("code")
 const url_codigo = "https://auth.contaazul.com/oauth2/authorize?response_type=code&";
@@ -38,6 +42,7 @@ cb_client_secret.value = client_secret
 cb_client_Base64.value = client_Base64
 cb_caminho.value = caminho
 /// Captura o código se já tiver nos parametros da URL ou direciona para login Conta_Azul
+
 if (code) {
         cb_code.value = code
     } else {        
@@ -52,29 +57,22 @@ btGeraCod.addEventListener('click', (event) => {
 
 // Gera Token
 btGeraToken.addEventListener('click', async(event) => {
-    event.preventDefault()
-    const arquivo = lerArquivo()
-    cb_token_renova.value = arquivo
-    console.log(arquivo)
-
-    /*
     const token_todos = await gera_token()
     cb_token_acesso.value = token_todos.access_token
     cb_token_renova.value = token_todos.refresh_token
     dv_token.style.display = "block"
-*/
   
 })
 
 // Exporta arquivo
-btexportar.addEventListener('click', (event) => {
-    event.preventDefault()
+
+btexporta.addEventListener('click', async(event) => {
+    event.preventDefault() 
     const arquivo = lerArquivo()
     cb_token_renova.value = arquivo
     console.log(arquivo)
 
 })
-
 
 
 //// ==== Funções ========
@@ -117,23 +115,21 @@ async function gera_token() {
 
 // Ler CSV
 async function lerArquivo() {
-  try {
-    const data = await fs.readFile(caminho + 'Acesso_Dados.csv', 'utf8');
-    console.log('Conteúdo do arquivo:', data);
-    return data
-  } catch (err) {
-    console.error('Erro ao ler arquivo:', err);
-  }
-  
-}
-
+// Maneira de ler aquivo no servidor via fecth
+    const endpoint = caminho+'Acesso_Dados.csv'
+    fetch(endpoint)
+     .then(res=>res.text())
+     .then(res=>{
+      console.log(res)})
+    }
+   
 
 // Gravar CSV
 
 async function criarArquivo() {
   try {
     const conteudo = 'Nome;Valor\nCodigo_Acesso_Dia;0ac140b6-e1cb-4a53-b6d1-8ff89a94f382\nCliente_ID;3s7hmj1jf2fhesvdvfk7d3dpov';
-    await fs.writeFile(caminho + 'Acesso_Dados.csv', conteudo, 'utf8');
+    await writeFile(caminho + 'Acesso_Dados.csv', conteudo, 'utf8');
     console.log('Arquivo criado com sucesso!');
   } catch (err) {
     console.error('Erro ao criar arquivo:', err);
@@ -149,6 +145,16 @@ async function criarArquivo() {
 //const fetch = require('node-fetch')
 //const btoa = require('btoa') // Para gerar a base64
 //const { URLSearchParams } = require('url')
+
+/// Ler arquivo local. Não funciona no Chrome e outros Navegadore, questão de segurança
+ /* try {
+    const data = await fs.readFile(caminho + 'Acesso_Dados.csv', 'utf8');
+    console.log('Conteúdo do arquivo:', data);
+    return data
+  } catch (err) {
+    console.error('Erro ao ler arquivo:', err);
+  }
+  */
 
 /// Fazer download de um aquivo no github
 /*
