@@ -52,6 +52,7 @@ btGeraCod.addEventListener('click', (event) => {
 
 // Gera Token
 btGeraToken.addEventListener('click', async(event) => {
+    event.preventDefault() 
     const token_todos = await gera_token()
     cb_token_acesso.value = token_todos.access_token
     cb_token_renova.value = token_todos.refresh_token
