@@ -114,9 +114,11 @@ async function lerArquivo(valor) {
 // Maneira de ler aquivo no servidor via fecth
     const endpoint = caminho + valor
     const result = await fetch(endpoint)
-     .then((res)=>res.text())
+     .then((response)=>response.text())
+     .then(data => {
+          console.log(data)
+     })
     
-    console.log(result)
     return result
     }
   
