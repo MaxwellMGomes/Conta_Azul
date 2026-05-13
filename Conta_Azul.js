@@ -64,7 +64,7 @@ btGeraToken.addEventListener('click', async(event) => {
 
 btexporta.addEventListener('click', async(event) => {
     event.preventDefault() 
-    const arquivo = lerArquivo()
+    const arquivo = lerArquivo('Acesso_Dados.csv')
     cb_token_renova.value = arquivo
     console.log(arquivo)
 
@@ -110,15 +110,15 @@ async function gera_token() {
 /// ===> Manipular aquivo csv no javascript
 
 // Ler CSV
-async function lerArquivo() {
+async function lerArquivo(valor) {
 // Maneira de ler aquivo no servidor via fecth
-    const endpoint = caminho+'Acesso_Dados.csv'
-    fetch(endpoint)
+    const endpoint = caminho + valor
+    const result = fetch(endpoint)
      .then((res)=>res.json())
      .then((data)=>{
       console.log(data)})
     }
-   return data
+   return result
 
 // Gravar CSV
 
