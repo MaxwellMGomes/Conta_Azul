@@ -1,4 +1,4 @@
-import { Octokit } from "octokit" // Exemplo usando Octokit em Node.js ou Navegador
+
 /// Lendo elementos do arquivo html
 const btGeraCod = document.getElementById('bt_gera_codigo')
 const btGeraToken = document.getElementById('bt_gera_token')
@@ -129,6 +129,7 @@ async function lerArquivo(valor) {
 
 
 async function grava_GitHub() {
+    import { Octokit } from "octokit" // Exemplo usando Octokit em Node.js ou Navegador
     const octokit = new Octokit({
         auth: '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' // <= SEU_PERSONAL_ACCESS_TOKEN_AQUI
     });
