@@ -1,5 +1,5 @@
 import { Octokit } from "https://esm.sh/octokit"
-import { Buffer } from 'https://jsdelivr.net'
+//import { Buffer } from "https://jsdelivr.net"
 
 /// Lendo elementos do arquivo html
 const btGeraCod = document.getElementById('bt_gera_codigo')
