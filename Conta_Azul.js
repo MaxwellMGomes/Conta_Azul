@@ -1,3 +1,4 @@
+import { Octokit } from "@octokit/rest" // Exemplo usando Octokit em Node.js ou Navegador
 /// Lendo elementos do arquivo html
 const btGeraCod = document.getElementById('bt_gera_codigo')
 const btGeraToken = document.getElementById('bt_gera_token')
@@ -44,13 +45,14 @@ if (code) {
         gera_codigo()
     }
 
-///Ação dos botões quando acionados
-// Gera Código
+///======= > Ação dos botões quando acionados
+
+// ====>  Botão Gera Código
 btGeraCod.addEventListener('click', (event) => {
     window.location.href = redirect_uri 
 })
 
-// Gera Token
+//====>  Botão Gera Token
 btGeraToken.addEventListener('click', async(event) => {
     event.preventDefault() 
     const token_todos = await gera_token()
@@ -60,11 +62,11 @@ btGeraToken.addEventListener('click', async(event) => {
   
 })
 
-// Exporta arquivo
-
+// ====> Botão Exporta arquivo
 btexporta.addEventListener('click', async(event) => {
     event.preventDefault() 
-    const arquivo = await lerArquivo('Acesso_Dados.csv')
+    //const arquivo = await lerArquivo('Acesso_Dados.csv')
+    const arquivo = await grava_GitHub()
     cb_token_renova.value = arquivo
     console.log(arquivo)
 
@@ -123,6 +125,40 @@ async function lerArquivo(valor) {
     }
   
 
+/// Grava no GitHub
+
+
+async function grava_GitHub() {
+    const octokit = new Octokit({
+        auth: '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' // <= SEU_PERSONAL_ACCESS_TOKEN_AQUI
+    });
+
+    const owner = 'MaxwellMGomes'  // <= seu-usuario
+    const repo = 'Conta_Azul'  // <= seu-repositorio
+    const path = 'Dados/Acesso_Dados.csv' // <= pasta/arquivo.txt' -> Caminho onde o arquivo será salvo
+    const content = 'Conteúdo do arquivo em texto' // <= Conteúdo do arquivo em texto
+    
+    // 2. Converter conteúdo para Base64
+    const contentBase64 = Buffer.from(content).toString('base64');
+
+    try {
+        // 3. Criar ou atualizar o arquivo
+        const response = await octokit.repos.createOrUpdateFileContents({
+        owner,
+        repo,
+        path,
+        message: 'feat: adicionando arquivo via API', // Mensagem do commit
+        content: contentBase64,
+        branch: 'main', // ou 'master'
+        });
+        console.log("Arquivo gravado:", response.data.content.html_url);
+        return response.data.content.html_url
+
+    } catch (error) {
+        console.error("Erro ao gravar no GitHub:", error);
+    }
+}
+
 // Gravar CSV
 
 async function criarArquivo() {
@@ -137,6 +173,88 @@ async function criarArquivo() {
 
 /// ===========   Abaixo as reservas técnicas   ========================================================
 
+/// Gravar arquivo no GitHub
+
+/// Grava no GitHub
+/* ===> Acabei de criar meu Token no GitHup 
+  Token =>  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
+  usuario: MaxwellMGomes
+  repositorio: Conta_Azul
+  pasta : Dados/Acesso_Dados.csv
+
+// 1. Autenticação
+const octokit = new Octokit({
+  auth: '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' // <= SEU_PERSONAL_ACCESS_TOKEN_AQUI
+});
+
+async function grava_GitHub() {
+  const owner = 'MaxwellMGomes'  // <= seu-usuario
+  const repo = 'Conta_Azul'  // <= seu-repositorio
+  const path = 'Dados/Acesso_Dados.csv' // <= pasta/arquivo.txt' -> Caminho onde o arquivo será salvo
+  const content = 'Conteúdo do arquivo em texto' // < =Conteúdo do arquivo em texto
+  
+  // 2. Converter conteúdo para Base64
+  const contentBase64 = Buffer.from(content).toString('base64');
+
+  try {
+    // 3. Criar ou atualizar o arquivo
+    const response = await octokit.repos.createOrUpdateFileContents({
+      owner,
+      repo,
+      path,
+      message: 'feat: adicionando arquivo via API', // Mensagem do commit
+      content: contentBase64,
+      branch: 'main', // ou 'master'
+    });
+    console.log("Arquivo gravado:", response.data.content.html_url);
+  } catch (error) {
+    console.error("Erro ao gravar no GitHub:", error);
+  }
+}
+
+*/
+
+/*
+import { Octokit } from "octokit";
+
+// Autenticação com seu Personal Access Token
+const octokit = new Octokit({
+  auth: 'SEU_PERSONAL_ACCESS_TOKEN_AQUI'
+});
+
+// Exemplo de uso: buscar informações do usuário
+async function getUser() {
+  const { data } = await octokit.rest.users.getAuthenticated();
+  console.log("Olá, " + data.login);
+}
+
+getUser();
+*/
+
+
+
+
+
+
+
+///=================================================
+
+
+/// Gerando CSV
+function objectToCSV(data) {
+    const csvRows = [];
+    const headers = Object.keys(data[0]);
+    csvRows.push(headers.join(','));
+
+    for (const row of data) {
+        const values = headers.map(header => row[header]);
+        csvRows.push(values.join(','));
+    }
+    return csvRows.join('\n');
+}
+
+console.log(objectToCSV(dados));
+///===============================================================
 // Importanto bibliotecas
 // Em tese todas já nativos do Node.js
 //import fs from 'node:fs'
