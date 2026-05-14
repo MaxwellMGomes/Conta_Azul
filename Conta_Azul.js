@@ -129,7 +129,7 @@ async function lerArquivo(valor) {
 
 
 async function grava_GitHub() {
-    import { Octokit } from "octokit" // Exemplo usando Octokit em Node.js ou Navegador
+    import { Octokit } from "@octokit/rest" // Exemplo usando Octokit em Node.js ou Navegador
     const octokit = new Octokit({
         auth: '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' // <= SEU_PERSONAL_ACCESS_TOKEN_AQUI
     });

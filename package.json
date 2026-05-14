@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Acesso sistema Conta_Azul via API",
   "main": "Conta_Azul.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,6 +19,7 @@
   },
   "homepage": "https://github.com/MaxwellMGomes/Conta_Azul#readme",
   "dependencies": {
+    "@octokit/rest": "^22.0.1",
     "octokit": "^5.0.5"
   }
 }
