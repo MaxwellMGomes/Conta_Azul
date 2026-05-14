@@ -1,4 +1,4 @@
-import { Octokit } from "@octokit/rest" // Exemplo usando Octokit em Node.js ou Navegador
+import { Octokit } from "octokit" // Exemplo usando Octokit em Node.js ou Navegador
 /// Lendo elementos do arquivo html
 const btGeraCod = document.getElementById('bt_gera_codigo')
 const btGeraToken = document.getElementById('bt_gera_token')

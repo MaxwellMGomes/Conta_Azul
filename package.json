@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/MaxwellMGomes/Conta_Azul/issues"
   },
-  "homepage": "https://github.com/MaxwellMGomes/Conta_Azul#readme"
+  "homepage": "https://github.com/MaxwellMGomes/Conta_Azul#readme",
+  "dependencies": {
+    "octokit": "^5.0.5"
+  }
 }
