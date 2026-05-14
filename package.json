@@ -20,6 +20,7 @@
   "homepage": "https://github.com/MaxwellMGomes/Conta_Azul#readme",
   "dependencies": {
     "@octokit/rest": "^22.0.1",
+    "buffer": "^6.0.3",
     "octokit": "^5.0.5"
   }
 }

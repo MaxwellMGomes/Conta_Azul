@@ -1,4 +1,6 @@
 import { Octokit } from "https://esm.sh/octokit"
+import { Buffer } from 'buffer'
+
 /// Lendo elementos do arquivo html
 const btGeraCod = document.getElementById('bt_gera_codigo')
 const btGeraToken = document.getElementById('bt_gera_token')
