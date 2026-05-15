@@ -1,4 +1,4 @@
-import { Octokit } from "https://esm.sh/octokit"
+//import { Octokit } from "https://esm.sh/octokit"
 //const cors = require('cors')
 //import { Buffer } from "node:buffer"
 //teste
