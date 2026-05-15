@@ -6,9 +6,7 @@ import { Octokit } from "https://esm.sh/octokit"
 //const PORT = 3000
 //app.use(cors()); // Enables CORS for all routes
 
-import { Buffer } from "node:buffer"
-
-
+//import { Buffer } from "node:buffer"
 //import { Buffer } from "https://jsdelivr.net"
 
 /// Lendo elementos do arquivo html
@@ -152,7 +150,8 @@ async function grava_GitHub() {
     const content = 'Conteúdo do arquivo em texto' // <= Conteúdo do arquivo em texto
     
     // 2. Converter conteúdo para Base64
-    const contentBase64 = Buffer.from(content).toString('base64');
+    //const contentBase64 = Buffer.from(content).toString('base64');
+    const contentBase64 = btoa(content)
 
     try {
         // 3. Criar ou atualizar o arquivo
