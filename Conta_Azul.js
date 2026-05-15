@@ -1,10 +1,10 @@
 import { Octokit } from "https://esm.sh/octokit"
-import express from 'express'
-import cors from 'cors'
+//import express from 'express'
+//import cors from 'cors'
 
-const app = express()
-const PORT = 3000
-app.use(cors()); // Enables CORS for all routes
+//const app = express()
+//const PORT = 3000
+//app.use(cors()); // Enables CORS for all routes
 
 import { Buffer } from "node:buffer"
 
