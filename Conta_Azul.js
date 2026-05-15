@@ -1,7 +1,6 @@
 import { Octokit } from "https://esm.sh/octokit"
-//const cors = require('cors')
+const cors = require('cors')
 //import { Buffer } from "node:buffer"
-//teste
 
 //import { Buffer } from "https://jsdelivr.net"
 
@@ -241,13 +240,11 @@ getUser();
 
 
 
-
-
-
 ///=================================================
 
 
 /// Gerando CSV
+/*
 function objectToCSV(data) {
     const csvRows = [];
     const headers = Object.keys(data[0]);
@@ -261,6 +258,8 @@ function objectToCSV(data) {
 }
 
 console.log(objectToCSV(dados));
+
+*/
 ///===============================================================
 // Importanto bibliotecas
 // Em tese todas já nativos do Node.js
