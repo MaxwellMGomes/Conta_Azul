@@ -1,4 +1,6 @@
  /* import { Octokit } from "https://esm.sh/octokit"
+    import { Octokit } from "https://jsdelivr.net"
+    import { Octokit } from "https://esm.sh/@octokit/core"
   import express from 'express'
   import cors from 'cors'
 
@@ -10,7 +12,8 @@
 //import { Buffer } from "node:buffer"
 //import { Buffer } from "https://jsdelivr.net"
 
-import { Octokit } from "https://jsdelivr.net"
+
+import { Octokit } from "https://esm.sh/@octokit/core"
 /// Lendo elementos do arquivo html
 const btGeraCod = document.getElementById('bt_gera_codigo')
 const btGeraToken = document.getElementById('bt_gera_token')
