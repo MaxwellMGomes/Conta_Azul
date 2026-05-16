@@ -149,14 +149,14 @@ async function grava_GitHub() {
     const auth = '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' // <= SEU_PERSONAL_ACCESS_TOKEN_AQUI
     const owner = 'MaxwellMGomes'  // <= seu-usuario
     const repo = 'Conta_Azul'  // <= seu-repositorio
-    const path = 'Dados/Acesso_Dados.csv' // <= pasta/arquivo.txt' -> Caminho onde o arquivo será salvo
+    const path = 'Acesso_Dados.txt' // <= pasta/arquivo.txt' -> Caminho onde o arquivo será salvo
     const conteudo = 'Conteúdo do arquivo em texto' // <= Conteúdo do arquivo em texto
     
     // 2. Converter conteúdo para Base64
     //const contentBase64 = Buffer.from(content).toString('base64');
     const conteudoBase64 = btoa(conteudo)
 
-    fetch(`https://github.com{owner}/${repo}/contents/${path}`, {
+    fetch(`https://github.com/{owner}/${repo}/contents/${path}`, {
         method: 'PUT',
         headers: {
             'Authorization': `Bearer ${auth}`,
