@@ -10,7 +10,7 @@
 //import { Buffer } from "node:buffer"
 //import { Buffer } from "https://jsdelivr.net"
 
-import { Octokit } from "@octokit/rest"
+import { Octokit } from "https://jsdelivr.net"
 /// Lendo elementos do arquivo html
 const btGeraCod = document.getElementById('bt_gera_codigo')
 const btGeraToken = document.getElementById('bt_gera_token')
