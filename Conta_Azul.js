@@ -142,10 +142,10 @@ async function lerArquivo(valor) {
 async function grava_GitHub() {
     //import { Octokit } from "@octokit/rest" // Exemplo usando Octokit em Node.js ou Navegador
     //const octokit = new Octokit({
-    //    auth: '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' // <= SEU_PERSONAL_ACCESS_TOKEN_AQUI
+    //    auth: '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' // <= Anterior SEU_PERSONAL_ACCESS_TOKEN_AQUI
     //});
     
-    const auth = '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' // <= SEU_PERSONAL_ACCESS_TOKEN_AQUI
+    const auth = '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' // Token vence 15/06/26 <= SEU_PERSONAL_ACCESS_TOKEN_AQUI
     const owner = 'MaxwellMGomes'  // <= seu-usuario
     const repo = 'Conta_Azul'  // <= seu-repositorio
     const path = 'Acesso_Dados.txt' // <= pasta/arquivo.txt' -> Caminho onde o arquivo será salvo
