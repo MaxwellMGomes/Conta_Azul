@@ -182,7 +182,7 @@ async function grava_GitHub() {
         path: path,
         message: 'feat: adicionando ou atualizando arquivo via script JS',
         content: conteudoBase64, // Use Buffer.from('...').toString('base64') no Node.js
-        sha: sha, // Obrigatório apenas para atualizações
+        //sha: sha, // Obrigatório apenas para atualizações
         branch: 'main', // Ou 'master'
         });
 
