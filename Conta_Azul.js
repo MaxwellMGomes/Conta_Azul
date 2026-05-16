@@ -1,5 +1,5 @@
-/* import { Octokit } from "https://esm.sh/octokit"
-  import express from 'express'
+  import { Octokit } from "https://esm.sh/octokit"
+ /* import express from 'express'
   import cors from 'cors'
 
   const app = express()
@@ -140,46 +140,54 @@ async function lerArquivo(valor) {
 
 
 async function grava_GitHub() {
-    /*import { Octokit } from "@octokit/rest" // Exemplo usando Octokit em Node.js ou Navegador
+    //import { Octokit } from "@octokit/rest" // Exemplo usando Octokit em Node.js ou Navegador
     //const octokit = new Octokit({
     //    auth: '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' // <= SEU_PERSONAL_ACCESS_TOKEN_AQUI
-    });
-    */
-
+    //});
+    
     const auth = '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' // <= SEU_PERSONAL_ACCESS_TOKEN_AQUI
     const owner = 'MaxwellMGomes'  // <= seu-usuario
     const repo = 'Conta_Azul'  // <= seu-repositorio
     const path = 'Acesso_Dados.txt' // <= pasta/arquivo.txt' -> Caminho onde o arquivo será salvo
     const conteudo = 'Conteúdo do arquivo em texto' // <= Conteúdo do arquivo em texto
-    
+    const octokit = new Octokit({auth: auth });    
+
     // 2. Converter conteúdo para Base64
     //const contentBase64 = Buffer.from(content).toString('base64');
     const conteudoBase64 = btoa(conteudo)
 
-    fetch(`https://github.com/{owner}/${repo}/contents/${path}`, {
-        method: 'PUT',
-        headers: {
-            'Authorization': `Bearer ${auth}`,
-            'Content-Type': 'application/json',
-            'User-Agent': 'MaxwellMGomes'
-        },
-        body: JSON.stringify({
-            message: 'Criando arquivo via JavaScript', // Mensagem de commit obrigatória
-            content: conteudoBase64,
-            branch: 'main' // ou 'master' dependendo do seu repositório
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.content) {
-            console.log('Arquivo salvo com sucesso!', data);
-        } else {
-            console.error('Erro ao salvar o arquivo:', data);
+    try {
+        // Opcional: Verifique se o arquivo já existe para obter seu SHA
+        // Se o arquivo já existir, o GitHub exige o SHA atual para alterá-lo.
+        let sha = null;
+        try {
+            const response = await octokit.rest.repos.getContent({
+                owner: owner,
+                repo: repo,
+                path: path,
+            });
+            sha = response.data.sha; 
+        } catch (error) {
+            console.log("Arquivo não existe. Um novo será criado.");
         }
-    })
-    .catch(error => console.error('Erro na requisição:', error));
-   
-}
+
+        // Grava ou atualiza o arquivo
+        const resultado = await octokit.rest.repos.createOrUpdateFileContents({
+        owner: owner,
+        repo: repo,
+        path: path,
+        message: 'feat: adicionando ou atualizando arquivo via script JS',
+        content: conteudoBase64, // Use Buffer.from('...').toString('base64') no Node.js
+        sha: sha, // Obrigatório apenas para atualizações
+        branch: 'main', // Ou 'master'
+        });
+
+        console.log("Arquivo gravado com sucesso! Commit:", resultado.data.commit.sha);
+    } catch (erro) {
+        console.error("Erro ao gravar arquivo:", erro);
+    }
+    }
+
 
 // Gravar CSV
 

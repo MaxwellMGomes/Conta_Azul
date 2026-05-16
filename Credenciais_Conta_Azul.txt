@@ -140,6 +140,7 @@ arquivo : ./Conta_Azul/node_modules/json-with-bigint/.github/workflows/ci.yml
       - name: Test
         run: npm run test
 
+//// ===> Gravando arquivo no GitHub
 /// Requisição via octokit para gravar arquivo no GitHub
      try {
         // 3. Criar ou atualizar o arquivo
@@ -157,3 +158,30 @@ arquivo : ./Conta_Azul/node_modules/json-with-bigint/.github/workflows/ci.yml
     } catch (error) {
         console.error("Erro ao gravar no GitHub:", error);
     }
+
+
+   ===> Usando o fecth 
+    fetch(`https://github.com/{owner}/${repo}/contents/${path}`, {
+        method: 'PUT',
+        headers: {
+            'Authorization': `Bearer ${auth}`,
+            'Content-Type': 'application/json',
+            'User-Agent': 'MaxwellMGomes'
+        },
+        body: JSON.stringify({
+            message: 'Criando arquivo via JavaScript', // Mensagem de commit obrigatória
+            content: conteudoBase64,
+            branch: 'main' // ou 'master' dependendo do seu repositório
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.content) {
+            console.log('Arquivo salvo com sucesso!', data);
+        } else {
+            console.error('Erro ao salvar o arquivo:', data);
+        }
+    })
+    .catch(error => console.error('Erro na requisição:', error));
+   
+}
