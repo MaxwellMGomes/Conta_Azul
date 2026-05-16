@@ -10,6 +10,7 @@
 //import { Buffer } from "node:buffer"
 //import { Buffer } from "https://jsdelivr.net"
 
+import { Octokit } from "@octokit/rest"
 /// Lendo elementos do arquivo html
 const btGeraCod = document.getElementById('bt_gera_codigo')
 const btGeraToken = document.getElementById('bt_gera_token')
@@ -140,7 +141,7 @@ async function lerArquivo(valor) {
 
 
 async function grava_GitHub() {
-    import { Octokit } from "@octokit/rest" // Exemplo usando Octokit em Node.js ou Navegador
+    //import { Octokit } from "@octokit/rest" // Exemplo usando Octokit em Node.js ou Navegador
     //const octokit = new Octokit({
     //    auth: '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' // <= Anterior SEU_PERSONAL_ACCESS_TOKEN_AQUI
     //});
