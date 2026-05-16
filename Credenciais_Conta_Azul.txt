@@ -139,3 +139,21 @@ arquivo : ./Conta_Azul/node_modules/json-with-bigint/.github/workflows/ci.yml
           node-version: ${{ matrix.node-version }} => Alteramos esta linha
       - name: Test
         run: npm run test
+
+/// Requisição via octokit para gravar arquivo no GitHub
+     try {
+        // 3. Criar ou atualizar o arquivo
+        const response = await octokit.repos.createOrUpdateFileContents({
+        owner,
+        repo,
+        path,
+        message: 'feat: adicionando arquivo via API', // Mensagem do commit
+        content: contentBase64,
+        branch: 'main', // ou 'master'
+        });
+        console.log("Arquivo gravado:", response.data.content.html_url);
+        return response.data.content.html_url
+
+    } catch (error) {
+        console.error("Erro ao gravar no GitHub:", error);
+    }

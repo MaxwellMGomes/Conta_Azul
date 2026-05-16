@@ -139,36 +139,45 @@ async function lerArquivo(valor) {
 
 
 async function grava_GitHub() {
-    //import { Octokit } from "@octokit/rest" // Exemplo usando Octokit em Node.js ou Navegador
-    const octokit = new Octokit({
-        auth: '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' // <= SEU_PERSONAL_ACCESS_TOKEN_AQUI
+    /*import { Octokit } from "@octokit/rest" // Exemplo usando Octokit em Node.js ou Navegador
+    //const octokit = new Octokit({
+    //    auth: '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' // <= SEU_PERSONAL_ACCESS_TOKEN_AQUI
     });
+    */
 
+    const auth: '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' // <= SEU_PERSONAL_ACCESS_TOKEN_AQUI
     const owner = 'MaxwellMGomes'  // <= seu-usuario
     const repo = 'Conta_Azul'  // <= seu-repositorio
     const path = 'Dados/Acesso_Dados.csv' // <= pasta/arquivo.txt' -> Caminho onde o arquivo será salvo
-    const content = 'Conteúdo do arquivo em texto' // <= Conteúdo do arquivo em texto
+    const conteudo = 'Conteúdo do arquivo em texto' // <= Conteúdo do arquivo em texto
     
     // 2. Converter conteúdo para Base64
     //const contentBase64 = Buffer.from(content).toString('base64');
-    const contentBase64 = btoa(content)
+    const conteudoBase64 = btoa(conteudo)
 
-    try {
-        // 3. Criar ou atualizar o arquivo
-        const response = await octokit.repos.createOrUpdateFileContents({
-        owner,
-        repo,
-        path,
-        message: 'feat: adicionando arquivo via API', // Mensagem do commit
-        content: contentBase64,
-        branch: 'main', // ou 'master'
-        });
-        console.log("Arquivo gravado:", response.data.content.html_url);
-        return response.data.content.html_url
-
-    } catch (error) {
-        console.error("Erro ao gravar no GitHub:", error);
-    }
+    fetch(`https://github.com{owner}/${repo}/contents/${path}`, {
+        method: 'PUT',
+        headers: {
+            'Authorization': `Bearer ${auth}`,
+            'Content-Type': 'application/json',
+            'User-Agent': 'MaxwellMGomes'
+        },
+        body: JSON.stringify({
+            message: 'Criando arquivo via JavaScript', // Mensagem de commit obrigatória
+            content: conteudoBase64,
+            branch: 'main' // ou 'master' dependendo do seu repositório
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.content) {
+            console.log('Arquivo salvo com sucesso!', data);
+        } else {
+            console.error('Erro ao salvar o arquivo:', data);
+        }
+    })
+    .catch(error => console.error('Erro na requisição:', error));
+   
 }
 
 // Gravar CSV
