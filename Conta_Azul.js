@@ -14,7 +14,10 @@
 
 
 
-import { Octokit } from "https://esm.sh/@octokit/core"
+import { Octokit } from "https://esm.sh/@octokit/rest"
+const auth = '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' 
+const octokit = new Octokit({ auth: auth });
+
 /// Lendo elementos do arquivo html
 const btGeraCod = document.getElementById('bt_gera_codigo')
 const btGeraToken = document.getElementById('bt_gera_token')
@@ -206,8 +209,8 @@ async function grava_GitHub() {
 
 async function octo() {
     
-    const auth = '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' 
-    const octokit = new Octokit({ auth: auth });
+   // const auth = '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' 
+   // const octokit = new Octokit({ auth: auth });
 
     try {
         const response = await octokit.request('GET /repos/{owner}/{repo}', {
@@ -225,7 +228,22 @@ async function octo() {
         console.error('Erro:', error);
     }
 }
-   
+
+async function testarConexao() {
+    const auth = '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' 
+    const octokit = new Octokit({ auth: auth });
+  try {
+    // 2. Faça uma requisição para verificar as credenciais
+    const response = await octokit.rest.users.getAuthenticated();
+    
+    console.log("Conexão bem-sucedida! ✔️");
+    console.log(`Olá, ${response.data.login}!`);
+    console.log(`ID do usuário: ${response.data.id}`);
+  } catch (error) {
+    console.error("Erro ao conectar à API do GitHub: ❌");
+    console.error(error.message);
+  }
+}
 
 // Gravar CSV
 
