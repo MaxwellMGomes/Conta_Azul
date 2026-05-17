@@ -158,11 +158,12 @@ async function grava_GitHub() {
     //const octokit = new Octokit({
     //    auth: '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' // <= Anterior SEU_PERSONAL_ACCESS_TOKEN_AQUI
     //});
+    // 16/05/26 -> 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 // 4a gerada - todas permissoes
     // 15/05/26 -> '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' // 3a gerada - mais ampla vence 15/06/26
     // 15/05/26 -> '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' // 2a gerada 
     // 1305/26 -> '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' // 1a gerada
     
-    const auth = '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' // Token vence 15/06/26 <= SEU_PERSONAL_ACCESS_TOKEN_AQUI
+    const auth = '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' // Token vence 15/06/26 <= SEU_PERSONAL_ACCESS_TOKEN_AQUI
     const owner = 'MaxwellMGomes'  // <= seu-usuario
     const repo = 'Conta_Azul'  // <= seu-repositorio
     const path = 'Acesso_Dados.txt' // <= pasta/arquivo.txt' -> Caminho onde o arquivo será salvo
@@ -233,7 +234,7 @@ async function octo() {
 }
 
 async function testarConexao() {
-  const auth = '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' 
+  const auth = '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' 
   const octokit = new Octokit({ auth: auth });
   try {
     // 2. Faça uma requisição para verificar as credenciais
