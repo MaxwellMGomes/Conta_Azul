@@ -87,7 +87,9 @@ btexporta.addEventListener('click', async(event) => {
     cb_token_renova.value = arquivo
     console.log(arquivo)
     */
-   octo()
+   const var_octo = octo()
+   cb_token_renova.value = var_octo
+
    
 
 })
@@ -218,6 +220,7 @@ async function grava_GitHub() {
             console.log('Status HTTP:', response.status);       // 200
             console.log('URL requisitada:', response.url);       // https://github.com
             console.log('Nome do Repositório:', response.data.name); // rest.js
+            return response
             
         } catch (error) {
             console.error('Erro:', error);
