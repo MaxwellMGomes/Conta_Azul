@@ -158,8 +158,11 @@ async function grava_GitHub() {
     //const octokit = new Octokit({
     //    auth: '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' // <= Anterior SEU_PERSONAL_ACCESS_TOKEN_AQUI
     //});
+    // 15/05/26 -> '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' // 3a gerada - mais ampla vence 15/06/26
+    // 15/05/26 -> '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' // 2a gerada 
+    // 1305/26 -> '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' // 1a gerada
     
-    const auth = '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' // Token vence 15/06/26 <= SEU_PERSONAL_ACCESS_TOKEN_AQUI
+    const auth = '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' // Token vence 15/06/26 <= SEU_PERSONAL_ACCESS_TOKEN_AQUI
     const owner = 'MaxwellMGomes'  // <= seu-usuario
     const repo = 'Conta_Azul'  // <= seu-repositorio
     const path = 'Acesso_Dados.txt' // <= pasta/arquivo.txt' -> Caminho onde o arquivo será salvo
