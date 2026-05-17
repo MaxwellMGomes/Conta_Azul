@@ -209,7 +209,6 @@ async function octo() {
     const auth = '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' 
     const octokit = new Octokit({ auth: auth });
 
-    async function getRepoDetails() {
     try {
         const response = await octokit.request('GET /repos/{owner}/{repo}', {
         owner: 'octokit',
@@ -224,7 +223,6 @@ async function octo() {
         
     } catch (error) {
         console.error('Erro:', error);
-    }
     }
 }
    
