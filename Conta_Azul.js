@@ -230,8 +230,8 @@ async function octo() {
 }
 
 async function testarConexao() {
-    //const auth = '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' 
-    //const octokit = new Octokit({ auth: auth });
+  const auth = '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' 
+  const octokit = new Octokit({ auth: auth });
   try {
     // 2. Faça uma requisição para verificar as credenciais
     const response = await octokit.rest.users.getAuthenticated();
