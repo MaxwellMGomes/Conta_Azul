@@ -85,13 +85,13 @@ btGeraToken.addEventListener('click', async(event) => {
 btexporta.addEventListener('click', async(event) => {
     event.preventDefault() 
     //const arquivo = await lerArquivo('Acesso_Dados.csv')
-    /*
+    
     const arquivo = await grava_GitHub()
     cb_token_renova.value = arquivo
     console.log(arquivo)
-    */
-   const var_octo = testarConexao()
-   cb_token_renova.value = var_octo
+    
+   //const var_octo = testarConexao()
+   //cb_token_renova.value = var_octo
 
    
 
