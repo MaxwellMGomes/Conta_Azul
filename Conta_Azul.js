@@ -90,7 +90,7 @@ btexporta.addEventListener('click', async(event) => {
     cb_token_renova.value = arquivo
     console.log(arquivo)
     */
-   const var_octo = octo()
+   const var_octo = testarConexao()
    cb_token_renova.value = var_octo
 
    
