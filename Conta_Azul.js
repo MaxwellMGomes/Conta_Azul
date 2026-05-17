@@ -13,6 +13,7 @@
 //import { Buffer } from "https://jsdelivr.net"
 
 
+
 import { Octokit } from "https://esm.sh/@octokit/core"
 /// Lendo elementos do arquivo html
 const btGeraCod = document.getElementById('bt_gera_codigo')
@@ -81,9 +82,13 @@ btGeraToken.addEventListener('click', async(event) => {
 btexporta.addEventListener('click', async(event) => {
     event.preventDefault() 
     //const arquivo = await lerArquivo('Acesso_Dados.csv')
+    /*
     const arquivo = await grava_GitHub()
     cb_token_renova.value = arquivo
     console.log(arquivo)
+    */
+   octo()
+   
 
 })
 
@@ -174,6 +179,8 @@ async function grava_GitHub() {
         } catch (error) {
             console.log("Arquivo não existe. Um novo será criado.");
         }
+    ////===> Ultimo erro ao gravar arquivo no GitHub
+    //Conta_Azul.js:191 Erro ao gravar arquivo: TypeError: Cannot read properties of undefined (reading 'repos')
 
         // Grava ou atualiza o arquivo
         const resultado = await octokit.rest.repos.createOrUpdateFileContents({
@@ -192,6 +199,32 @@ async function grava_GitHub() {
     }
     }
 
+/// Testando Octokit
+    //import { Octokit } from "@octokit/rest";
+
+    async function octo() {
+        
+        const auth = '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' 
+        const octokit = new Octokit({ auth: auth });
+
+        async function getRepoDetails() {
+        try {
+            const response = await octokit.request('GET /repos/{owner}/{repo}', {
+            owner: 'octokit',
+            repo: 'rest.js'
+            });
+
+            // Acessando as propriedades da resposta
+            console.log('Status HTTP:', response.status);       // 200
+            console.log('URL requisitada:', response.url);       // https://github.com
+            console.log('Nome do Repositório:', response.data.name); // rest.js
+            
+        } catch (error) {
+            console.error('Erro:', error);
+        }
+        }
+    }
+   
 
 // Gravar CSV
 
