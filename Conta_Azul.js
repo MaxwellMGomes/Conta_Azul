@@ -230,8 +230,8 @@ async function octo() {
 }
 
 async function testarConexao() {
-    const auth = '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' 
-    const octokit = new Octokit({ auth: auth });
+    //const auth = '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' 
+    //const octokit = new Octokit({ auth: auth });
   try {
     // 2. Faça uma requisição para verificar as credenciais
     const response = await octokit.rest.users.getAuthenticated();
@@ -239,6 +239,7 @@ async function testarConexao() {
     console.log("Conexão bem-sucedida! ✔️");
     console.log(`Olá, ${response.data.login}!`);
     console.log(`ID do usuário: ${response.data.id}`);
+    return JSON.stringify(response)
   } catch (error) {
     console.error("Erro ao conectar à API do GitHub: ❌");
     console.error(error.message);
