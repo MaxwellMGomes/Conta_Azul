@@ -204,29 +204,29 @@ async function grava_GitHub() {
 /// Testando Octokit
     //import { Octokit } from "@octokit/rest";
 
-    async function octo() {
+async function octo() {
+    
+    const auth = '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' 
+    const octokit = new Octokit({ auth: auth });
+
+    async function getRepoDetails() {
+    try {
+        const response = await octokit.request('GET /repos/{owner}/{repo}', {
+        owner: 'octokit',
+        repo: 'rest.js'
+        });
+
+        // Acessando as propriedades da resposta
+        console.log('Status HTTP:', response.status);       // 200
+        console.log('URL requisitada:', response.url);       // https://github.com
+        console.log('Nome do Repositório:', response.data.name); // rest.js
+        return JSON.stringify(response)
         
-        const auth = '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' 
-        const octokit = new Octokit({ auth: auth });
-
-        async function getRepoDetails() {
-        try {
-            const response = await octokit.request('GET /repos/{owner}/{repo}', {
-            owner: 'octokit',
-            repo: 'rest.js'
-            });
-
-            // Acessando as propriedades da resposta
-            console.log('Status HTTP:', response.status);       // 200
-            console.log('URL requisitada:', response.url);       // https://github.com
-            console.log('Nome do Repositório:', response.data.name); // rest.js
-            return response
-            
-        } catch (error) {
-            console.error('Erro:', error);
-        }
-        }
+    } catch (error) {
+        console.error('Erro:', error);
     }
+    }
+}
    
 
 // Gravar CSV
