@@ -15,7 +15,7 @@
 
 
 import { Octokit } from "https://esm.sh/@octokit/rest"
-const auth = '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' 
+const auth = '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' 
 const octokit = new Octokit({ auth: auth });
 
 /// Lendo elementos do arquivo html
