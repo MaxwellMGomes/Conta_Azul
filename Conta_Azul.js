@@ -231,7 +231,7 @@ async function grava_fetch(){
             },
             body: JSON.stringify(dadosIssue)
         });
-
+        alert(`Response Status : ${response.status}`)
         if (response.ok) {
             alert('Dados gravados com sucesso no GitHub Issues!');
             return JSON.stringify(response)
