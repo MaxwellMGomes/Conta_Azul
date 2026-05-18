@@ -86,7 +86,8 @@ btexporta.addEventListener('click', async(event) => {
     event.preventDefault() 
     //const arquivo = await lerArquivo('Acesso_Dados.csv')
     
-    const arquivo = await grava_GitHub()
+    //const arquivo = await grava_GitHub()
+    const arquivo = await grava_fetch()
     cb_token_renova.value = arquivo
     console.log(arquivo)
     
@@ -207,6 +208,44 @@ async function grava_GitHub() {
         console.error("Erro ao gravar arquivo:", erro);
     }
     }
+
+/// Testa grava com fetch
+async function grava_fetch(){
+    const auth = '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' // 
+    // const url = https://maxwellmgomes.github.io/Conta_Azul/
+    const owner = 'maxwellmgomes'  // <= seu-usuario
+    const repo = 'Conta_Azul'  // <= seu-repositorio
+
+    const dadosIssue = {
+            title: `Novo envio de: Maxwell`,
+            body: `### Dados do Formulário\n\n**Nome:** Maxwell\n\n**Mensagem:**\n Vai dar certo!`
+        };
+    try {
+        const response = await fetch(`https://github.com{usuario}/${repo}/issues`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${auth}`,
+                'Accept': 'application/vnd.github+json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dadosIssue)
+        });
+
+        if (response.ok) {
+            alert('Dados gravados com sucesso no GitHub Issues!');
+            return JSON.stringify(response)
+            //document.getElementById('meuFormulario').reset();
+        } else {
+            const erro = await response.json();
+            console.error(erro);
+            alert('Erro ao enviar dados.');
+        }
+    } catch (error) {
+        console.error('Erro na requisição:', error);
+        alert('Erro de conexão.');
+    }
+}
+
 
 /// Testando Octokit
     //import { Octokit } from "@octokit/rest";
