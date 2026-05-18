@@ -221,7 +221,8 @@ async function grava_fetch(){
             body: `### Dados do Formulário\n\n**Nome:** Maxwell\n\n**Mensagem:**\n Vai dar certo!`
         };
     try {
-        const response = await fetch(`https://github.com{usuario}/${repo}/issues`, {
+        const response = await fetch(`https://github.com${owner}/${repo}/issues`, {
+        //const response = await fetch(`https://github.com{usuario}/${repo}/issues`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${auth}`,
